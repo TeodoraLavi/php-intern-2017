@@ -38,7 +38,36 @@
 		}
 	});
 </script>
-
+<script>
+   function validate()
+ {
+ 	var pass=$("#login_pass").val();
+ 	var password_regex1=/([a-z].*[A-Z])|([A-Z].*[a-z])/;
+ 	var password_regex2=/([0-9])/;
+ 	var password_regex3=/([!,%,&,@,#,$,^,*,?,_,~])/;
+ 
+ 	if(password_regex1.test(pass)==false)
+ 	{
+ 		alert( " Va rugam sa introduceti cel putin o litera majuscula ");
+ 		return false;
+ 	}
+ 	else if(password_regex2.test(pass)==false)
+ 	{
+ 		alert( " Introduceti cel putin o cifra ");
+ 		return false;
+ 	}
+ 	if(password_regex3.test(pass)==true)
+ 	{
+ 		alert( " Caracterele speciale nu sunt permise " );
+ 		return false;
+ 	}
+ 	else
+ 	{
+ 		return true;
+ 	}
+ }  
+ </script>
+ 
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 </head>
@@ -47,14 +76,14 @@
   <header id="header" class="clear">
     <div id="hgroup">
       <h1><a href="#">Roweb</a></h1>
-      <h2>Internship Program</h2>
+      <h2>Saulescu Lavinia Teodora</h2>
     </div>
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/products.html">Products</a></li>
-        <li><a href="/add-product.html">Add product</a></li>
-        <li><a href="/login.html">Login</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="add-product.html">Add product</a></li>
+        <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
   </header>
@@ -63,26 +92,37 @@
 <div class="wrapper row2">
   <div id="container" class="clear">
     <!-- content body -->
-    
-    
-	<div class="container">
-		<form action="login.php" method="get" id="login_form">
-			<h1 class="login_heading">Login</h1>
-
-			<fieldset>
-				<legend id="subtitle">Please fill in your details</legend>
-				<label for="login_email">Username / Email:</label>
-				<input type="text" id="login_email" name="email">
-
-				<label for="login_password">Password:</label>
-				<input type="password" id="login_password" name="pass">
-			</fieldset>
-			
-			<button type="submit">Login</button>
-		</form>
-	</div><!-- container -->
-
-</div>
+    <div class="container">
+ 	        <form name="Form_login" action="login.html" method="post" id="login_form" onsubmit="return validate();">
+ 				<h1 class="login_heading">Login</h1>
+ 
+ 				<fieldset>
+ 					<legend id="subtitle">Please fill in your details</legend>
+ 					<label for="login_email">Username / Email:</label>
+ 					<input type="email" id="login_email" name="email" required placeholder="Enter Email">
+  
+  	<form action="index.html" method="post" id="login_form">
+        
+         <h1>Login</h1>
+         
+         <fieldset>
+ 			<legend>Please fill in your details</legend>
+ 			<label for="name">Product Name:</label>
+ 			<input type="text" id="login_email" name="login_email">
+  
+  			<label for="decription">Description:</label>
+  			<input type="password" id="login_password" name="login_password">
+ 			<label for="login_password">Password:</label>
+ 			<input type="password" id="login_pass" name="pass" required placeholder="Enter Password">
+          </fieldset>
+ 		
+ 			<div class="" id="passwordValidation"></div>
+ 			<button type="submit">Login</button>
+        </form>
+    </div><!-- container -->
+  
+ </div>
+	
 <!-- footer -->
 <div class="wrapper row3">
   <footer id="footer" class="clear">
